@@ -4,42 +4,40 @@ import hu.bme.mit.train.interfaces.TrainController;
 
 public class TrainControllerImpl implements TrainController {
 
-	private int step = 0;
-	private int referenceSpeed = 0;
-	private int speedLimit = 0;
+    private int step = 0;
+    private int referenceSpeed = 0;
+    private int speedLimit = 0;
 
-	@Override
-	public void followSpeed() {
-		if (referenceSpeed < 0) {
-			referenceSpeed = 0;
-		} else {
-			referenceSpeed += step;
-		}
+    @Override
+    public void followSpeed() {
+        referenceSpeed += step;
+        enforceSpeedLimit();
+    }
 
-		enforceSpeedLimit();
-	}
+    @Override
+    public int getReferenceSpeed() {
+        return referenceSpeed;
+    }
 
-	@Override
-	public int getReferenceSpeed() {
-		return referenceSpeed;
-	}
+    @Override
+    public void setSpeedLimit(int speedLimit) {
+        this.speedLimit = speedLimit;
+        enforceSpeedLimit();
 
-	@Override
-	public void setSpeedLimit(int speedLimit) {
-		this.speedLimit = speedLimit;
-		enforceSpeedLimit();
-		
-	}
+    }
 
-	private void enforceSpeedLimit() {
-		if (referenceSpeed > speedLimit) {
-			referenceSpeed = speedLimit;
-		}
-	}
+    private void enforceSpeedLimit() {
+        if (referenceSpeed > speedLimit) {
+            referenceSpeed = speedLimit;
+        }
+        if (referenceSpeed < 0) {
+            referenceSpeed = 0;
+        }
+    }
 
-	@Override
-	public void setJoystickPosition(int joystickPosition) {
-		this.step = joystickPosition;		
-	}
+    @Override
+    public void setJoystickPosition(int joystickPosition) {
+        this.step = joystickPosition;
+    }
 
 }
