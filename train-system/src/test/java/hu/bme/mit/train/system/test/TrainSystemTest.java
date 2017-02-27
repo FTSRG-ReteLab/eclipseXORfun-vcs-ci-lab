@@ -11,7 +11,7 @@ import hu.bme.mit.train.system.TrainSystem;
 
 public class TrainSystemTest {
 
-	TrainControlle controller;
+	TrainController controller;
 	TrainSensor sensor;
 	TrainUser user;
 	
