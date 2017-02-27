@@ -3,15 +3,13 @@ package hu.bme.mit.train.user;
 import com.google.common.collect.Table;
 
 public class TrainTachograph {
-    Table<Integer, Integer, > table;
+    Table<Long, Integer, Integer> table;
 
-    public void record() {
-		table.
-
+    public void record(int joyStickPosition, int referenceSpeed) {
+		table.put(System.currentTimeMillis(), joyStickPosition, referenceSpeed);
     }
 
     public boolean isTableEmpty() {
-//		return table.isEmpty();
-        return true;
+        return table.isEmpty();
     }
 }

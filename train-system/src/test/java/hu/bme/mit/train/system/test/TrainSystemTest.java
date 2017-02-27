@@ -1,5 +1,6 @@
 package hu.bme.mit.train.system.test;
 
+import hu.bme.mit.train.user.TrainTachograph;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -55,5 +56,10 @@ public class TrainSystemTest {
 		Assert.assertEquals(1+1, 1);
 	}
 
-	
+	@Test
+	public void test4() {
+		TrainTachograph trainTachograph = new TrainTachograph();
+		trainTachograph.record(10, 10);
+		Assert.assertTrue(!trainTachograph.isTableEmpty());
+	}
 }
