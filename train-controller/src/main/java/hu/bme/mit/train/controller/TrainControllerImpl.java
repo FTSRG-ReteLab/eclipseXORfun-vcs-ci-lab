@@ -5,9 +5,9 @@ import hu.bme.mit.train.interfaces.TrainController;
 
 public class TrainControllerImpl implements TrainController {
 
-    private int step = 2;
+    private int step = 1;
     private int referenceSpeed = 0;
-    private int speedLimit = 0;
+    private int speedLimit = 2;
 
     @Override
     public void followSpeed() {
